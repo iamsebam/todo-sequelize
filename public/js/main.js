@@ -1,9 +1,5 @@
 document.querySelectorAll('.redirect').forEach(btn => {
   btn.addEventListener('click', () => {
-    redirect(`/${btn.name}`)
+    window.location.href = `/user/${btn.name}`
   })
 })
-
-function redirect(url) {
-  window.location.href = url
-}
