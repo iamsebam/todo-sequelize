@@ -1,30 +1,35 @@
 require('dotenv').config()
+const port = process.env.PORT || require('./config/config')[process.env.NODE_ENV].port
 
 const express = require('express')
 const bodyParser = require('body-parser')
 const passport = require('passport')
 const session = require('express-session')
-const models = require('./models')
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
 
-const port = process.env.PORT || require('./config/config')[process.env.NODE_ENV].port 
+const { models, sequelize } = require('./models')
 
 const app = express()
 
 app.set('view engine', 'ejs')
 app.use(express.static('./public'))
 
+const sessionStore = new SequelizeStore({ db: sequelize })
 app.use(session({
-  secret: 'its a secret',
-  resave: true,
-  saveUninitialized: true
+  secret: process.env.SESSION_SECRET,
+  store: sessionStore,
+  resave: false,
+  saveUninitialized: false
 }))
+
 app.use(passport.initialize())
 app.use(passport.session())
+require('./config/passport')(passport, models.User)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.use('/user', require('./routes/user'))
+app.use('/user', require('./routes/userRoute'))
 
 app.get('/', (req, res) => {
   res.render('pages/index', {title: 'Home', user: req.user})
