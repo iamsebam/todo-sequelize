@@ -14,7 +14,7 @@ const sequelize = new Sequelize(config[process.env.NODE_ENV].url, {
 const models = {
   User: sequelize.import('./user'),
   Todo: sequelize.import('./todo')
-};
+}
 
 Object.keys(models).forEach(modelName => {
   if (models[modelName].associate) {
@@ -22,7 +22,7 @@ Object.keys(models).forEach(modelName => {
   }
 })
 
-models.sequelize = sequelize;
-models.Sequelize = Sequelize;
+models.sequelize = sequelize
+models.Sequelize = Sequelize
 
-module.exports = models;
+module.exports = { models, sequelize}
