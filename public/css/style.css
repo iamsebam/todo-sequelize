@@ -73,3 +73,9 @@ input:focus{
   text-align: center;
   color: #545454;
 }
+.alert{
+  color: #e21414;
+}
+.success{
+  color: #1ebf13;
+}
