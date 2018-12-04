@@ -5,12 +5,13 @@
 </head>
 <body>
   <div class="wrapper">
-    <div class="main">
+    <div class="main">  
       <% if(user) { %>
-      <button class="btn redirect" name="logout">Logout</button>
+        <% include ../partials/messages %>
+        <button class="btn redirect" name="logout">Logout</button>
       <% } else { %>
-      <button class="btn login redirect" name="login">Login</button>
-      <button class="btn redirect" name="signup">Sign Up</button>
+        <button class="btn login redirect" name="login">Login</button>
+        <button class="btn redirect" name="signup">Sign Up</button>
       <% } %>
     </div>
   </div>
