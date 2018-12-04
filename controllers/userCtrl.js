@@ -14,10 +14,6 @@ module.exports = {
     })
   },
   logout: (req, res) => {
-    if (req.isUnauthenticated()) {
-      req.flash('alert', 'You have to be logged in.')
-      return res.redirect('login')
-    }
     req.session.destroy(err => {
       if (err) {
         console.log(err)
@@ -29,6 +25,13 @@ module.exports = {
     if (req.isAuthenticated()) {
       req.flash('alert', 'You are already logged in.')
       return res.redirect('/')
+    }
+    next()
+  },
+  isLoggedIn: (req, res, next) => {
+    if (req.isUnauthenticated()) {
+      req.flash('alert', 'You have to be logged in.')
+      return res.redirect('/user/login')
     }
     next()
   }
