@@ -1,18 +1,19 @@
 const router = require('express').Router()
   , passport = require('passport')
   , userCtrl = require('../controllers/userCtrl')
+  , validate = require('../config/validators')
 
-router.get('/login', userCtrl.login)
-router.get('/signup', userCtrl.signUp)
+router.get('/login', userCtrl.isNotLoggedIn, userCtrl.loginView)
+router.get('/signup', userCtrl.isNotLoggedIn,  userCtrl.signUpView)
 
-router.post('/signup', passport.authenticate('signup', {
-  successRedirect: '/user/login',
-  failureRedirect: '/user/signup'
+router.post('/signup', validate.signUpData, passport.authenticate('signup', {
+  successRedirect: '/',
+  failureRedirect: 'signup'
 }))
 
 router.post('/login', passport.authenticate('login', {
   successRedirect: '/',
-  failureRedirect: '/user/login'
+  failureRedirect: 'login'
 }))
 router.get('/logout', userCtrl.logout)
 
