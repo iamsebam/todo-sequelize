@@ -1,5 +1,6 @@
 const LocalStrategy = require('passport-local').Strategy
   , bcrypt = require('bcryptjs')
+  , { validationResult } = require('express-validator/check');
 
 module.exports = (passport, User) => {
   passport.serializeUser((user, done) => {
@@ -15,30 +16,33 @@ module.exports = (passport, User) => {
     passReqToCallback : true
   }, async (req, username, password, done) => {
     try {
-      const user = await User.findOne({ where: { username } })
-      if (user) {
-        return done(null, false, { message: 'Username already in use.' })
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        const messages = errors.array().map(err => err.msg)
+        return done(null, false, req.flash('alert', messages))
       }
       const newUser = await User.create({
         username: username,
         password: bcrypt.hashSync(password, 10)
       })
       if (!newUser) { 
-        return done(null, false, { message: 'Unable to create an account, try later!' }) 
+        return done(null, false, req.flash('alert', 'Unable to create an account, try again later.')) 
       }
-      return done(null, newUser)
+      return done(null, newUser, req.flash('success', 'User created!'))
     } catch (err) {
       return done(err)
     }
   }))
 
-  passport.use('login', new LocalStrategy(async (username, password, done) => {
+  passport.use('login', new LocalStrategy({
+    passReqToCallback: true
+  }, async (req, username, password, done) => {
     try {
       const user = await User.findOne({ where: { username } })
       if (!user || !bcrypt.compareSync(password, user.password)) {
-        return done(null, false, { message: 'Invalid username/password!' })
+        return done(null, false, req.flash('alert', 'Wrong username/password.'))
       }
-      return done(null, user)
+      return done(null, user, req.flash('success', 'Successfully logged in.'))
     } catch (err) {
       done(err)
     }
