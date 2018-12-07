@@ -4,12 +4,16 @@ module.exports = {
     return queryInterface.createTable('todos', {
       id: {
         allowNull: false,
-        autoIncrement: true,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       body: {
         type: Sequelize.TEXT
+      },
+      is_completed: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,

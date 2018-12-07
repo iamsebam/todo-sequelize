@@ -1,7 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
   const Todo = sequelize.define('todo', {
-    body: DataTypes.TEXT
-  }, {})
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false
+    },
+    body: DataTypes.TEXT,
+    is_completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
+  })
   Todo.associate = models => {
     Todo.belongsTo(models.User, {
       foreignKey: {
