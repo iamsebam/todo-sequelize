@@ -4,16 +4,15 @@
   <% include ../partials/head %>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="main">  
-      <% if(user) { %>
-        <% include ../partials/messages %>
-        <button class="btn redirect" name="logout">Logout</button>
-      <% } else { %>
-        <button class="btn login redirect" name="login">Login</button>
-        <button class="btn redirect" name="signup">Sign Up</button>
-      <% } %>
-    </div>
+  <% include ../partials/navbar %>
+  <div class="main">
+    <% if(user) { %>
+    <% include ../partials/messages %>
+    <button class="btn" id="todos">Todos</button>
+    <% } else { %>
+    <button class="btn login redirect" name="login">Login</button>
+    <button class="btn redirect" name="signup">Sign Up</button>
+    <% } %>
   </div>
   <% include ../partials/script %>
 </body>
