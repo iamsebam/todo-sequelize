@@ -33,12 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
       todo.addEventListener('click', (e) => {  
         if (e.target.matches('li')) { // Todo list item
           let activeListItem = document.querySelector('.li-active')
+          let editInput = document.querySelector('.editTodo-input')
           if (!(e.target === activeListItem)) {
             if (activeListItem) {
               toggleListItemView(activeListItem) 
             }
           } 
-          toggleListItemView(e.target)
+          if (!editInput) {
+            toggleListItemView(e.target)
+          }
         } else if (e.target.matches('.fa-trash-alt')) { // Delete button
           id = e.target.parentElement.parentElement.dataset.todo_id
           const req = new XMLHttpRequest()
