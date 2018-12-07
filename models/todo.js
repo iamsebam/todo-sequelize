@@ -7,10 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     body: DataTypes.TEXT,
-    is_completed: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
-    }
+    is_completed: DataTypes.BOOLEAN
   })
   Todo.associate = models => {
     Todo.belongsTo(models.User, {

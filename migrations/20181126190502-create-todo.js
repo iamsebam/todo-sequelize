@@ -11,10 +11,7 @@ module.exports = {
       body: {
         type: Sequelize.TEXT
       },
-      is_completed: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
-      },
+      is_completed: Sequelize.BOOLEAN,
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

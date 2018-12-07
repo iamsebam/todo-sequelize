@@ -22,6 +22,7 @@ module.exports = {
     try {
       await Todo.create({
         body: req.body.todo,
+        is_completed: false,
         creator: req.user.id
       })
       req.flash('success', 'New todo created!')
