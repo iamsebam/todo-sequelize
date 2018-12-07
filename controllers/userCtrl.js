@@ -3,14 +3,16 @@ module.exports = {
     return res.render('pages/signup', { 
       title: 'Sign Up', 
       errors: req.flash('alert'),
-      success: req.flash('success') 
+      success: req.flash('success'),
+      user: req.user 
     })
   },
   loginView: (req, res) => {
     return res.render('pages/login', { 
       title: 'Login', 
       errors: req.flash('alert'), 
-      success: req.flash('success') 
+      success: req.flash('success'),
+      user: req.user 
     })
   },
   logout: (req, res) => {
