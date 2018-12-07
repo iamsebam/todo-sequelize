@@ -17,7 +17,7 @@
       <div class="todo-list">
         <ul>
           <% todos.forEach(todo => { %>
-            <li data-todo_id="<%= todo.id %>"><%= todo.body %><span class="todo-panel"><i class="fas fa-check invisible"></i><i class="fas fa-edit invisible"></i><i class="fas fa-trash-alt invisible"></i></span></li>
+            <li data-todo_id="<%= todo.id %>"><%= todo.body %><span class="todo-panel"><i class="fas fa-check <%if (!todo.is_completed) { %> invisible <% } else { %> success <% } %>"></i><i class="fas fa-edit invisible"></i><i class="fas fa-trash-alt invisible"></i></span></li>
           <% }) %>
         </ul>
       </div>
