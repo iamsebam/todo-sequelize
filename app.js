@@ -32,7 +32,7 @@ require('./config/passport')(passport, models.User)
 app.use(flash())
 
 app.use('/user', require('./routes/userRoute'))
-
+app.use('/todos', require('./routes/todosRoute'))
 app.get('/', (req, res) => {
   res.render('pages/index', {
     title: 'Home', 
@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
   })
 })
 
-models.sequelize.sync({force: true}).then(() => {
+models.sequelize.sync().then(() => {
   app.listen(port, () => {
     console.log(`Server started on port ${port}`)
   })
