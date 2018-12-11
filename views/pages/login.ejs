@@ -4,9 +4,9 @@
   <% include ../partials/head %>
 </head>
 <body>
+  <% include ../partials/messages %>
   <% include ../partials/navbar %>
   <div class="main">
-    <% include ../partials/messages %>
     <form method="post" name="login" action="/user/login">
       <input class="login-input" type="text" name="username" placeholder="Username" required>
       <input class="login-input" type="password" name="password" placeholder="Password" required>

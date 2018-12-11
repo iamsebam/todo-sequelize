@@ -4,9 +4,9 @@
   <% include ../partials/head %>
 </head>
 <body>
+  <% include ../partials/messages %>
   <% include ../partials/navbar %>
-  <div class="main dashboard">
-    <% include ../partials/messages %>
+  <div class="main dashboard">  
     <div class="todos">
       <div class="todo-form">
         <form method="post" action="/todos/add" name="addTodo">

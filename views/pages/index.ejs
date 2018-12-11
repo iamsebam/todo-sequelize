@@ -4,10 +4,10 @@
   <% include ../partials/head %>
 </head>
 <body>
+  <% include ../partials/messages %>
   <% include ../partials/navbar %>
   <div class="main">
-    <% if(user) { %>
-    <% include ../partials/messages %>
+    <% if(user) { %>  
     <button class="btn" id="todos">Todos</button>
     <% } else { %>
     <button class="btn login redirect" name="login">Login</button>
