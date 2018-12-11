@@ -2,7 +2,7 @@ const LocalStrategy = require('passport-local').Strategy
   , bcrypt = require('bcryptjs')
   , { validationResult } = require('express-validator/check');
 
-module.exports = (passport, User) => {
+module.exports = (app, passport, User) => {
   passport.serializeUser((user, done) => {
     done(null, user.id)
   })
@@ -47,4 +47,7 @@ module.exports = (passport, User) => {
       done(err)
     }
   }))
+
+  app.use(passport.initialize())
+  app.use(passport.session())
 }
