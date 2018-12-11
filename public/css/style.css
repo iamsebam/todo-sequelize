@@ -1,17 +1,14 @@
 html{
   height:100%;
   background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
-  -webkit-font-smoothing: antialiased;
 }
 body{
   margin: 0 auto;
-  /* max-width: 1000px; */
   font-family: 'Roboto';
   position: relative;
   min-height: 100%;
   padding-right: 10px;
   padding-left: 10px;
-
 }
 button:focus{
   outline: 0;
@@ -20,7 +17,6 @@ input{
   opacity: 0.8;
   color: #545454;
   transition: opacity 0.3s ease-in-out;
-
 }
 input:focus{
   outline: 0;
@@ -28,32 +24,19 @@ input:focus{
 }
 .main{
   position: absolute;
-  top: 20%;
-  left: 35%;
   background-color: #f3f3f3;
   margin: 0 auto;
   min-width: 30%;
   border-radius: 20px;
-  padding-top: 3%;
-  padding-bottom: 3%;
   -webkit-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.4);
   -moz-box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.4);
   box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.4);
 }
-.dashboard{
-  left: 15%;
-  min-width: 70%;
-  height: 50%;
-}
 .btn{
   color: #fff;
   font-weight: 500;
-  font-size: 20px;
   display: block;
   margin: 0 auto; 
-  min-width: 35%;
-  padding-top: 5%;
-  padding-bottom: 5%;
   border: 0;
   border-radius: 15px;
   background-image: linear-gradient( 168.2deg,  rgba(44,207,156,1) 19.3%, rgba(18,235,167,1) 67.5% );
@@ -72,8 +55,6 @@ input:focus{
 }
 .navbar{
   position: absolute;
-  top: 50px;
-  right: 50px;
 }
 .navbar:after{
   margin: 0;
@@ -84,7 +65,6 @@ input:focus{
 .logout,
 .home{
   color: #fff;
-  font-size: 36px;
   transition: opacity 0.2s ease-in-out;
   opacity: 0.8;
   cursor: pointer;
@@ -97,8 +77,7 @@ input:focus{
 }
 .login-input{
   margin: 5px auto;
-  display:block;
-  font-size: 18px;
+  display: block;
   width: 70%;
   border: 0;
   border-radius: 7px;
@@ -113,16 +92,14 @@ input:focus{
   text-align: center;
   color: #545454;
 }
-.alert{
-  color: #e21414;
-}
-.success{
-  color: #1ebf13;
+.msg{
+  position: absolute;
+  background: #f3f3f3;
+  opacity: 0.9;
 }
 .addTodo-input{
   margin-left: 5%;
   margin-right: 2%;
-  font-size: 20px;
   width: 73%;
   border: 0;
   border-radius: 15px;
@@ -133,7 +110,6 @@ input:focus{
   float:left;
   min-width: 0;
   width: 10%;
-  font-size: 20px;
   padding: 2.5%;
   margin: 0 auto;
 }
@@ -165,8 +141,6 @@ ul::-webkit-scrollbar{
 }
 li{
   color: #545454;
-  font-size: 18px;
-  
   width: 95%;
   padding: 2.5%;
   border-radius: 15px;
@@ -174,7 +148,6 @@ li{
   transition: all 0.2s ease-in-out;
 }
 .editTodo-input{
-  font-size: 18px;
   width: 90%;
   border: 0;
   letter-spacing: 2px;
@@ -200,14 +173,16 @@ li:hover{
   display: block;
   clear: both;
 }
-.fa-check:hover{
+.fa-check:hover,
+.success{
   color: #1ebf13;
 }
 .fa-edit:hover{
   color: #4369ff;
 }
 .fa-trash-alt:hover,
-.fa-times:hover{
+.fa-times:hover,
+.alert{
   color: #e21414;
 }
 .fa-save:hover{
@@ -216,4 +191,192 @@ li:hover{
 .invisible {
   display: none;
   transition: all 0.2s ease-in-out;
+}
+@media all and (min-width: 320px){
+  .logout,
+  .home{
+    font-size: 2.0em;
+  }
+  .navbar{
+    top: 4%;
+    right: 5%;
+  }
+  .main{
+    top: 20%;
+    left: 2%;
+    min-width: 96%;
+    padding-top: 7%;
+    padding-bottom: 7%;
+  }
+  .dashboard{
+    top: 13%;
+    height: 80%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+  .btn{
+    min-width: 35%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 1.2em;
+  }
+  .addTodo-input,
+  .btn.addTodo{
+    font-size: 0.75em;
+  }
+  .msg{
+    font-size: 0.75em;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 4.7%;
+    left: 8%;
+    background: #f3f3f3;
+    padding: 2%;
+    border-radius: 10px;
+    opacity: 0.9;
+    width: 50%;
+  }
+  .todo-list{
+    height: 90%;
+  }
+  li{
+    font-size: 1em;
+  }
+  .editTodo-input {
+    font-size: 1em;
+    width: 85%;
+  }
+}
+@media all and (min-width: 375px){
+  .navbar{
+    right: 6%;
+  }
+  .addTodo-input,
+  .btn.addTodo{
+    font-size: 0.9em;
+  }
+  .msg{
+    font-size: 0.8em;
+    top: 4.2%;
+    left: 9%;
+  }
+  li{
+    font-size: 1.1em;
+  }
+}
+@media all and (min-width: 414px){
+  .logout,
+  .home{
+    font-size: 2.3em;
+  }
+  .msg{
+    font-size: 0.9em;
+    top: 4.3%;
+  }
+  .dashboard{
+    height: 78%;
+  }
+  .addTodo-input,
+  .btn.addTodo{
+    font-size: 1.0em;
+  }
+  li{
+    font-size: 1.2em;
+  }
+}
+@media all and (min-width: 500px){
+  .main{
+    min-width: 80%;
+    left: 10%;
+  }
+}
+@media all and (min-width: 768px){
+  .msg{
+    font-size: 1.1em;
+    top: 3.5%;
+    padding: 1.5%;
+    width: 35%;
+    left: 30%;
+  }
+  .logout,
+  .home{
+    font-size: 2.5em;
+  }
+  .main{
+    min-width: 50%;
+    left: 25%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+  .dashboard{
+    min-width: 80%;
+    left: 10%;
+  }
+  .addTodo-input,
+  .btn.addTodo{
+    font-size: 1.4em;
+  }
+  .dashboard{
+    top: 11.5%;
+    /* height: 75%; */
+  }
+  .todo-list{
+    height: 83%;
+  }
+  li{
+    font-size: 1.4em;
+  }
+  .editTodo-input{
+    width: 90%;
+  }
+}
+@media all and (min-width: 1024px){
+  .navbar{
+    top: 5%;
+    right: 5%;
+  }
+  .msg{
+    top: 4.8%;
+    padding: 1%;
+    width: 20%;
+    left: 40%;
+  }
+  .logout,
+  .home{
+    font-size: 2.7em;
+  }
+  .main{
+    top: 20%;
+  }
+  .dashboard{
+    top: 15%;
+    left: 20%;
+    height: 70%;
+    min-width: 60%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+  .todo-list{
+    height: 85.5%;
+  }
+}
+@media all and (min-width: 1440px){
+  .navbar{
+    right: 3.5%;
+  }
+  .msg{
+    top: 5%;
+    width: 25%;
+    left: 36.5%;
+  }
+  .main{
+    top: 20%;
+    left: 32.5%;
+    min-width: 35%;
+  }
+  .dashboard{
+    top: 15%;
+    min-width: 50%;
+    left: 25%;
+  }
 }
