@@ -8,10 +8,10 @@
   <% include ../partials/navbar %>
   <div class="main">
     <% if(user) { %>  
-    <button class="btn" id="todos">Todos</button>
+      <a class="btn" href="/todos">Todos</a>
     <% } else { %>
-    <button class="btn login redirect" name="login">Login</button>
-    <button class="btn redirect" name="signup">Sign Up</button>
+      <a class="btn login" href="/user/login">Login</a>
+      <a class="btn" href="/user/signup">Sign Up</a>
     <% } %>
   </div>
   <% include ../partials/script %>
