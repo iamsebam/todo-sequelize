@@ -32,9 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
         req.send()
       } else if (e.target.matches('.fa-edit')) { // Edit button
         let li = e.target.parentElement.parentElement
-        let input = `<input type="text" class="editTodo-input" name="todo" value="${li.textContent}" autocomplete="off" spellcheck="false"/><span class="todo-panel"><i class="far fa-save"></i><i class="fas fa-times"></i></span>`
+        let input = `<input type="text" class="editTodo-input" name="todo" autocomplete="off" spellcheck="false" autofocus/><span class="todo-panel"><i class="far fa-save"></i><i class="fas fa-times"></i></span>`
+        value = li.textContent
         li.textContent = ''
         li.insertAdjacentHTML('afterbegin', input)
+        document.querySelector('.editTodo-input').value = value
       } else if (e.target.matches('.fa-check')) { // Check button
         let li = e.target.parentElement.parentElement
         id = li.dataset.todo_id
@@ -49,12 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
         id = e.target.parentElement.parentElement.dataset.todo_id
         value = document.querySelector('.editTodo-input').value
         if (value === '') {
-          value = e.target.parentElement.parentElement.firstChild.getAttribute('placeholder')
+          value = e.target.parentElement.parentElement.firstChild.value
         }
         data = JSON.stringify({ todo: value })
         updateTodo(id, data)
       } else if (e.target.matches('.fa-times')) { // Cancel button
-        let todoContent = e.target.parentElement.parentElement.firstChild.getAttribute('placeholder')
+        let todoContent = e.target.parentElement.parentElement.firstChild.value
         let li = e.target.parentElement.parentElement
         let panel = '<span class="todo-panel"><i class="fas fa-check"></i><i class="fas fa-edit"></i><i class="fas fa-trash-alt"></i></span>'
         li.removeChild(li.firstChild)
