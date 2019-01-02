@@ -3,9 +3,14 @@ const Todo = require('../models').models.Todo
 module.exports = {
   todosView: async (req, res) => {
     try {
-      const todos = await Todo.findAll({where: {
-        creator: req.user.id
-      }})
+      const todos = await Todo.findAll({
+        where: {
+          creator: req.user.id
+        },
+        order: [
+          ['created_at', 'ASC']
+        ]
+      })
       res.render('pages/todos', {
         title: 'Todos', 
         todos,

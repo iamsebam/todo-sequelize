@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         req.send()
       } else if (e.target.matches('.fa-edit')) { // Edit button
         let li = e.target.parentElement.parentElement
-        let input = `<input type="text" class="editTodo-input" name="todo" placeholder="${li.textContent}" autocomplete="off" spellcheck="false"/><span class="todo-panel"><i class="far fa-save"></i><i class="fas fa-times"></i></span>`
+        let input = `<input type="text" class="editTodo-input" name="todo" value="${li.textContent}" autocomplete="off" spellcheck="false"/><span class="todo-panel"><i class="far fa-save"></i><i class="fas fa-times"></i></span>`
         li.textContent = ''
         li.insertAdjacentHTML('afterbegin', input)
       } else if (e.target.matches('.fa-check')) { // Check button
