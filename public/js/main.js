@@ -67,11 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   document.addEventListener('click', e => {
     let activeListItem = document.querySelector('.li-active')
-      if(!e.target.matches('.li-active')) {
-        if(activeListItem) {
-          toggleListItemView(activeListItem)
-        }
+    let msgBox = document.querySelectorAll('.msg')
+    if (!e.target.matches('.li-active')) {
+      if (activeListItem) {
+        toggleListItemView(activeListItem)
       }
+    }
+    if (e.target.matches('.msg')) {
+      msgBox[msgBox.length - 1].remove()
+    }
   })
   document.addEventListener('keyup', e => {
     if (e.keyCode === 13) {
