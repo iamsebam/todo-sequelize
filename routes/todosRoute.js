@@ -1,12 +1,13 @@
 const router = require('express').Router()
   , todosCtrl = require('../controllers/todosCtrl')
   , userCtrl = require('../controllers/userCtrl')
+  , validate = require('../config/validators')
 
 router.use(userCtrl.isLoggedIn)
 
 router.get('/', todosCtrl.todosView)
-router.post('/add', todosCtrl.addTodo)
-router.delete('/delete/:id', todosCtrl.deleteTodo)
-router.patch('/update/:id', todosCtrl.updateTodo)
+router.post('/todo', validate.todoData, todosCtrl.addTodo)
+router.delete('/todo/:id', todosCtrl.deleteTodo)
+router.patch('/todo/:id', todosCtrl.updateTodo)
 
 module.exports = router

@@ -27,5 +27,9 @@ module.exports = {
           return password
         }
       }).withMessage('Passwords do not match.')
+  ],
+  todoData: [
+    body('todo')
+      .not().isEmpty().withMessage('Todo cannot be empty')
   ]
 }

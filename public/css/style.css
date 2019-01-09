@@ -164,8 +164,7 @@ li{
   letter-spacing: 2px;
   padding: 0;
 }
-.li-active,
-li:hover{
+.li-active{
   opacity: 1;
   background-color: #fff;
   letter-spacing: 2px;
@@ -375,6 +374,13 @@ li:hover{
   }
   .todo-list{
     height: 85.5%;
+  }
+}
+@media screen and (min-device-width: 1200px){
+  li:hover{
+    opacity: 1;
+    background-color: #fff;
+    letter-spacing: 2px;
   }
 }
 @media all and (min-width: 1440px){
