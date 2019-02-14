@@ -18,7 +18,12 @@ module.exports = {
   logout: (req, res) => {
     req.session.destroy(err => {
       if (err) {
-        console.log(err)
+        res.status(500).send({
+          info: {
+            success: false,
+            messages: ['Failed to logout.']
+          }
+        })
       }
       return res.redirect('/')
     })

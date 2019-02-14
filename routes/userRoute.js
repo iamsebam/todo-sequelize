@@ -3,8 +3,8 @@ const router = require('express').Router()
   , userCtrl = require('../controllers/userCtrl')
   , validate = require('../config/validators')
 
-router.get('/login', userCtrl.isNotLoggedIn, userCtrl.loginView)
-router.get('/signup', userCtrl.isNotLoggedIn,  userCtrl.signUpView)
+// router.get('/login', userCtrl.isNotLoggedIn, userCtrl.loginView)
+// router.get('/signup', userCtrl.isNotLoggedIn,  userCtrl.signUpView)
 
 router.post('/signup', validate.signUpData, passport.authenticate('signup', {
   successRedirect: '/todos',

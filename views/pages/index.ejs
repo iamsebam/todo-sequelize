@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <% include ../partials/head %>
-</head>
-<body>
-  <% include ../partials/messages %>
-  <% include ../partials/navbar %>
-  <div class="main">
-    <% if(user) { %>  
-      <a class="btn" href="/todos">Todos</a>
-    <% } else { %>
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body>
+    <% include ../partials/messages %> <% include ../partials/navbar %> <%
+    if(!user) { %>
+    <div class="main">
       <a class="btn login" href="/user/login">Login</a>
-      <a class="btn" href="/user/signup">Sign Up</a>
-    <% } %>
-  </div>
-  <% include ../partials/script %>
-</body>
+      <a class="btn signup" href="/user/signup">Sign Up</a>
+    </div>
+    <% } else { %>
+    <div class="main dashboard">
+      <div class="todos">
+        <div class="todo-form">
+          <form method="post" action="/todos/todo" name="addTodo">
+            <input
+              class="addTodo-input"
+              type="text"
+              name="todo"
+              placeholder="What would you like to do, <%= user.username %>?"
+              autocomplete="off"
+              spellcheck="false"
+              required
+            />
+            <button class="btn addTodo" type="submit">
+              <i class="fas fa-plus"></i>
+            </button>
+          </form>
+        </div>
+        <div class="todo-list">
+          <ul>
+            <% todos.forEach(todo => { %>
+                <li data-todo_id="<%= todo.id %>"><%= todo.body %><span class="todo-panel"><i class="fas fa-check <%if (!todo.is_completed) { %> invisible <% } else { %> success <% } %>"></i><i class="fas fa-edit invisible"></i><i class="fas fa-trash-alt invisible"></i></span></li>
+              <% }) %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <% } %> <% include ../partials/script %>
+  </body>
 </html>
